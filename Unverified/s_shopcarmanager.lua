@@ -12,11 +12,8 @@ local items = {
 	"carupgrade"
 }
 
-function carinit()
+function carinit(_,acc)
 	-- body
-	local usr = "usr"
-	local acc = getAccount(usr)
-	if acc then
 		initCarInfo(acc)
 		local info = fromJSON(getAccountData(acc,scarinfo))
 		for i=1,#items do
@@ -24,6 +21,6 @@ function carinit()
 				shopCar(items[i],info.carcolor,info.lightscolor,info.nickcolor,info.chatcolor,info.idupgrade)
 			end
 		end
-	end
-
 end
+
+addEventHandler("onPlayerLogin",root,carinit)
